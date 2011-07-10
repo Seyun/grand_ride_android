@@ -1,23 +1,16 @@
 package com.ppassa;
 
-import android.content.Context;
-import android.widget.Toast;
+import android.webkit.WebView;
+
 
 public class JavaScriptInterface {
-	Context mContext;
+	WebView webView;
 
-    /** Instantiate the interface and set the context */
-    JavaScriptInterface(Context c) {
-        mContext = c;
+    JavaScriptInterface(WebView webView) {
+        this.webView = webView;
     }
     
-    public String ensureTracking(Integer rideId) {
-    	int i = 0;
-    	i = 2;
-    	return "good again";
-    }
-    /** Show a toast from the web page */
-    public void showToast(String toast) {
-        Toast.makeText(mContext, toast, Toast.LENGTH_SHORT).show();
+    public void ensureTracking(int ride_id) {
+    	webView.loadUrl("javascript:recordTrack(1, 1)");
     }
 }

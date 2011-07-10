@@ -20,6 +20,7 @@ public class Grand_ride_androidActivity extends Activity {
         
         mWebView = (WebView) findViewById(R.id.webview);
         mWebView.getSettings().setJavaScriptEnabled(true);
+        mWebView.setWebViewClient(new MyWebViewClient());
         
         mWebView.setWebChromeClient(new WebChromeClient() {
             public boolean onJsAlert(WebView view, String url, String message, JsResult result) 
@@ -28,28 +29,24 @@ public class Grand_ride_androidActivity extends Activity {
             }
             }); 
         
-        mWebView.addJavascriptInterface(new JavaScriptInterface(this), "Android");
+        mWebView.addJavascriptInterface(new JavaScriptInterface(mWebView), "Android");
         mWebView.loadUrl(Config.url);
-        
-//        mWebView.setWebViewClient(new HelloWebViewClient());
-        
     }
-//    
-//    @Override
-//    public boolean onKeyDown(int keyCode, KeyEvent event) {
-//        if ((keyCode == KeyEvent.KEYCODE_BACK) && mWebView.canGoBack()) {
-//            mWebView.goBack();
-//            return true;
-//        }
-//        return super.onKeyDown(keyCode, event);
-//
-//    }
     
-//    private class HelloWebViewClient extends WebViewClient {
-//        @Override
-//        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-//            view.loadUrl(url);
-//            return true;
-//        }
-//    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK) && mWebView.canGoBack()) {
+            mWebView.goBack();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+
+    }
+    
+    private class MyWebViewClient extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            return false;
+        }
+    }
 }
