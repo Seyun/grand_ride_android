@@ -94,9 +94,10 @@ public class Grand_ride_androidActivity extends Activity {
     	public void run() {
     		Log.d("timer_task", "timertask run!");
     		Position pos = mPosManager.getCurrentPosition();
-    		if (pos != null)
-    			mWebView.loadUrl("javascript:recordTrack("+pos.latitude+", "+pos.longitude+")");
-    		else
+    		if (pos != null) {
+    			mWebView.loadUrl("javascript:record_track("+pos.latitude+", "+pos.longitude+")");
+    			mWebView.loadUrl("javascript:update_map()");
+    		} else
     			Log.d("update_task", "position is not available");
     		return;
     	}
