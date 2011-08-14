@@ -1,4 +1,4 @@
 *.class
 default.properties
 .settings/
-bin/
+bin
