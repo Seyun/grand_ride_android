@@ -30,7 +30,7 @@ public class Grand_ride_androidActivity extends Activity {
             {
                 return false;
             }
-            }); 
+            });
         
         mWebView.addJavascriptInterface(new JavaScriptInterface(mWebView), "Android");
         mWebView.loadUrl(Config.url);
